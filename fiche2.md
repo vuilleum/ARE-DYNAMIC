@@ -1,5 +1,7 @@
 #Visualiser avec Python
 
+_Ce document est librement inspiré [tutoriel NumPy de Nicolas Rougier](http://www.labri.fr/perso/nrougier/teaching/matplotlib/matplotlib.html) et est disponible avec son autorisation sous licence Creative Commons Attribution 3.0 United States License (CC-by) http://creativecommons.org/licenses/by/3.0/us_
+
 [Matplotlib](http://matplotlib.org) est une bibliothèque du langage de programmation Python qui, combinée avec les bibliothèques python de calcul scientifique ```NumPy``` et ```scipy```, constitue un puissant outil pour tracer et visualiser des données.
 
 ## Utiliser Matplotlib pour tracer une fonction
@@ -8,14 +10,18 @@
 from pylab import *
 x = np.linspace(-np.pi, np.pi, 256)
 cosx = np.cos(x)
+sinx = np.sin(x)
 plot(x, cosx)
+plot(x, sinx)
 show()
 ```
 
-La fonction ``linspace`` de la librairie ``NumPy`` (np) permet de générer un tableau de 256 valeurs réélles variant de -pi à pi.
+![image](http://www.labri.fr/perso/nrougier/teaching/matplotlib/figures/exercice_1.png)
+
+La fonction ``linspace`` de la librairie ``NumPy`` (np) permet de générer un tableau de 256 valeurs réélles variant de -pi à pi (inclus).
 `cosx` est un tableau de 256 valeurs contenant le résultat de l'application de la fonction ``cos(x)`` sur chacune des valeurs du tableau `x`.
 
-Matplotlib est fournie avec un jeu de paramètres par défaut qui permet de personnaliser toute sorte de propriétés. Vous pouvez contrôler les réglages par défaut de (presque) toutes les propriétés : taille du graphique, résolution en points par pouce (dpi), épaisseur du trait, couleurs, styles, vues, repères, grilles, textes, polices de caractères, etc. Bien que les réglages par défaut répondent à la plupart des cas courants, vous pourriez être amenés à en modifier quelques-uns pour des cas plus spécifiques.
+Matplotlib est fournie avec un jeu de paramètres par défaut qui permet de personnaliser toute sorte de propriétés. Vous pouvez contrôler les réglages par défaut de (presque) toutes les propriétés : taille du graphique, résolution en points par pouce (dpi), épaisseur du trait, couleurs, styles, vues, repères, grilles, textes, polices de caractères, etc. Bien que les réglages par défaut répondent à la plupart des cas courants, vous pourriez être amené à en modifier quelques-uns pour des cas plus spécifiques.
 
 ###Caractéristiques du trait
 
