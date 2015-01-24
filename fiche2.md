@@ -2,7 +2,7 @@
 
 _Ce document est librement inspiré [tutoriel NumPy de Nicolas Rougier](http://www.labri.fr/perso/nrougier/teaching/matplotlib/matplotlib.html) et est disponible avec son autorisation sous licence Creative Commons Attribution 3.0 United States License (CC-by) http://creativecommons.org/licenses/by/3.0/us_
 
-Lorsque l'on fait une simulation d'un phénomène physique, il est nécessaire de pouvoir visualiser graphiquement ce qui se passe.
+Lorsque l'on fait une simulation d'un phénomène physique, il est nécessaire de pouvoir visualiser graphiquement ce qui se passe. Une visualisation permet de comprendre et d'analyser plus facilement un phénomène.
 
 [Matplotlib](http://matplotlib.org) est une bibliothèque du langage de programmation Python qui, combinée avec les bibliothèques de calcul scientifique ```NumPy``` et ```scipy```, constitue un puissant outil pour tracer et visualiser des données.
 
@@ -70,7 +70,7 @@ show()
 
 ##Changer les caractéristiques du trait
 
-Nous voulons changer la courbe du coisinus en bleu et le sin en rouge avec une ligne plus épaisse. Nous allons également modifier la taille de la figure pour la rendre un peu plus horizontale.
+Nous voulons changer la courbe du cosinus en bleu et le sin en rouge avec une ligne plus épaisse. Nous allons également modifier la taille de la figure pour la rendre un peu plus horizontale.
 
 ```python
 ...
@@ -147,7 +147,7 @@ yticks([-1, 0, +1],
 
 ## Modifier la position des axes
 
-They can be placed at arbitrary positions and until now, they were on the border of the axis. We'll change that since we want to have them in the middle. Since there are four of them (top/bottom/left/right), we'll discard the top and right by setting their color to none and we'll move the bottom and left ones to coordinate 0 in data space coordinates.
+Les axes peuvent être placés arbitrairement et jusqu'à présent il se trouve sur les bords bas et gauche de la figure. Nous allons changer leurs positions pour les placer au milieu. Since there are four of them (top/bottom/left/right), we'll discard the top and right by setting their color to none and we'll move the bottom and left ones to coordinate 0 in data space coordinates.
 
 ```python
 ...
