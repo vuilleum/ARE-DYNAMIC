@@ -110,7 +110,7 @@ http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.ylim
 
 ## Définir des graduations
 
-Current ticks are not ideal because they do not show the interesting values (+/-π,+/-π/2) for sine and cosine. We'll change them such that they show only these values.
+Les graduations de notre figure ne sont pas idéales car elles ne montre pas des valeurs intéressantes comme (+/-π,+/-π/2) pour sinus et cosinus. Nous les changeons pour montrer ces valeurs.
 
 ```python
 ...
@@ -131,7 +131,7 @@ xticks( [-np.pi, -np.pi/2, 0, np.pi/2, np.pi])
 yticks([-1, 0, +1])
 ```
 
-Les graduations sont bien placées, mais le contenu de leur texte n'est pas très explicite. Nous pourrions deviner que 3.142 correspond à π, mais ce serait beaucoup mieux de l'indiquer clairement. Lorsqu'on définit des valeurs pour les graduations, il est aussi possible de définir des étiquettes de texte correspondant à ces valeurs dans une liste fournie en second argument d'appel de fonction. Nous utiliserons une notation LaTeX pour obtenir un meilleur rendu final.
+Les graduations sont bien placées, mais le contenu de leur texte n'est pas très explicite. Nous pourrions deviner que 3.142 correspond à π, mais ce serait beaucoup mieux de l'indiquer clairement. Lorsqu'on définit des valeurs pour les graduations, il est aussi possible de définir des étiquettes de texte correspondant à ces valeurs dans une liste fournie en second argument d'appel de fonction. Nous utiliserons une notation [LaTeX](https://fr.wikipedia.org/wiki/LaTeX) pour obtenir un meilleur rendu final.
 
 ```python
 xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],
@@ -143,9 +143,70 @@ yticks([-1, 0, +1],
 
 ![image](http://www.labri.fr/perso/nrougier/teaching/matplotlib/figures/exercice_6.png)
 
+## Modifier la position des axes
+
+They can be placed at arbitrary positions and until now, they were on the border of the axis. We'll change that since we want to have them in the middle. Since there are four of them (top/bottom/left/right), we'll discard the top and right by setting their color to none and we'll move the bottom and left ones to coordinate 0 in data space coordinates.
+
+```python
+...
+ax = gca()
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+ax.xaxis.set_ticks_position('bottom')
+ax.spines['bottom'].set_position(('data',0))
+ax.yaxis.set_ticks_position('left')
+ax.spines['left'].set_position(('data',0))
+...
+```
+
+![image](http://www.labri.fr/perso/nrougier/teaching/matplotlib/figures/exercice_7.png)
+
 ## Ajouter une légende
 
-### Sauvegarder une figure Matplotlib
+Ajoutons une légende dans le coin haut gauche. Il faut ajouter un paramètre nommé ``label`` qui sera utilisé dans la boîte de légende.
+
+```python
+...
+plot(c, cosx, color="blue", linewidth=2.5, linestyle="-", label="cosinus")
+plot(x, sinx, color="red",  linewidth=2.5, linestyle="-", label="sinus")
+
+legend(loc='upper left')
+...
+```
+
+![image](http://www.labri.fr/perso/nrougier/teaching/matplotlib/figures/exercice_8.png)
+
+** Question: Que fait la fonction ``legend()``?**
+
+## Ajouter des points particuliers
+
+Ajoutons quelques points intéressants en utilisant la fonction ``annotate()``.
+Nous choisissons la valeur 2π/3 et nous voulons annoter à la fois la courve sinus et cosinus. We'll first draw a marker on the curve as well as a straight dotted line. Then, we'll use the annotate command to display some text with an arrow.
+
+```python
+...
+
+t = 2*np.pi/3
+plot([t,t],[0,np.cos(t)], color ='blue', linewidth=2.5, linestyle="--")
+scatter([t,],[np.cos(t),], 50, color ='blue')
+
+annotate(r'$\sin(\frac{2\pi}{3})=\frac{\sqrt{3}}{2}$',
+xy=(t, np.sin(t)), xycoords='data',
+xytext=(+10, +30), textcoords='offset points', fontsize=16,
+arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+
+plot([t,t],[0,np.sin(t)], color ='red', linewidth=2.5, linestyle="--")
+scatter([t,],[np.sin(t),], 50, color ='red')
+
+annotate(r'$\cos(\frac{2\pi}{3})=-\frac{1}{2}$',
+xy=(t, np.cos(t)), xycoords='data',
+xytext=(-90, -50), textcoords='offset points', fontsize=16,
+arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+...
+```
+![image](http://www.labri.fr/perso/nrougier/teaching/matplotlib/figures/exercice_9.png)
+
+## Sauvegarder une figure Matplotlib
 
 On peut générer un fichier image (que l'on pourra réutiliser ensuite sur le web ou dans un rapport) à partir d'une figure Matplotlib (par exemple ici en résolution de 72 points par pouce[^1].)
 
@@ -157,7 +218,7 @@ savefig("nom_image.png", dpi=72)
 
 ## Utiliser Matplotlib pour afficher des mesures
 
-## Utiliser Matplotlib pour dessiner une grille 2D
+## Utiliser Matplotlib pour afficher le contenu d'une grille à deux dimensions
 
 ## Faire des animations avec Matplotlib
 Il est possible d'utiliser Matplotlib pour animer des images en utilisant le module animation.
