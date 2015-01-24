@@ -26,45 +26,47 @@ La fonction ``linspace`` de la librairie ``NumPy`` (np) permet de générer un t
 ## Valeurs d'affichage par défaut
 Matplotlib est fournie avec un jeu de paramètres par défaut qui permet de personnaliser toute sorte de propriétés. Vous pouvez contrôler les réglages par défaut de (presque) toutes les propriétés : taille du graphique, résolution en points par pouce (dpi), épaisseur du trait, couleurs, styles, vues, repères, grilles, textes, polices de caractères, etc. Bien que les réglages par défaut répondent à la plupart des cas courants, vous pourriez être amené à en modifier quelques-uns pour des cas plus spécifiques.
 
-In the script below, we've instantiated (and commented) all the figure settings that influence the appearance of the plot. The settings have been explicitly set to their default values, but now you can interactively play with the values to explore their affect (see Line properties and Line styles below).
+Dans le programme ci-dessous, nous avons mis l'ensemble des paramètres qui peuvent influencer l'apparence de la figure. Les paramètres ont été mis explicitement à leurs valeurs par défaut, mais vous pouvez jouer interactivement avec eux pour modifier la visualisation.
 
 ```python
-# Import everything from matplotlib (numpy is accessible via 'np' alias)
+# Importer tout de matplotlib (NumPy est accessible via l'alias 'np' alias)
 from pylab import *
 
-# Create a new figure of size 8x6 points, using 80 dots per inch
-figure(figsize=(8,6), dpi=80)
+# Créer une nouvelle figure de taille 8x6 points, en utilisant une résolution de 80 DPI
+figure(figsize = (8, 6), dpi=80)
 
-# Create a new subplot from a grid of 1x1
+# Créer une sous-figure à partir d'une grille 1x1
 subplot(1, 1, 1)
 
 x = np.linspace(-np.pi, np.pi, 256, endpoint=True)
-cosx,sinx = np.cos(x), np.sin(x)
+cosx, sinx = np.cos(x), np.sin(x)
 
-# Plot cosine using blue color with a continuous line of width 1 (pixels)
-plot(x, cosx, color="blue", linewidth=1.0, linestyle="-")
+# Dessiner la courbe cosinus avec la couleur bleu et une ligne continue de 1 pixel
+plot(x, cosx, color = "blue", linewidth = 1.0, linestyle = "-")
 
-# Plot sine using green color with a continuous line of width 1 (pixels)
-plot(x, sinx, color="green", linewidth=1.0, linestyle="-")
+# Dessiner la courbe sinus avec une couleur verte et une ligne continue de 1 pixel
+plot(x, sinx, color = "green", linewidth = 1.0, linestyle = "-")
 
-# Set x limits
+# Fixer les limites sur l'axe des x
 xlim(-4.0, 4.0)
 
-# Set x ticks
+# Fixer la graduations sur l'axe des x
 xticks(np.linspace(-4, 4, 9, endpoint = True))
 
-# Set y limits
+# Fixer les limites sur l'axe des y
 ylim(-1.0, 1.0)
 
-# Set y ticks
+# Fixer la graduations sur l'axe des y
 yticks(np.linspace(-1, 1, 5 , endpoint = True))
 
-# Save figure using 72 dots per inch
+# Sauvegarder la figure en 72 DPI
 # savefig("exercice_2.png", dpi = 72)
 
 # Montrer le résultat à l'écran
 show()
 ```
+
+**Question: Que signifie DPI ?**
 
 ##Changer les caractéristiques du trait
 
@@ -181,7 +183,7 @@ legend(loc='upper left')
 ## Ajouter des points particuliers
 
 Ajoutons quelques points intéressants en utilisant la fonction ``annotate()``.
-Nous choisissons la valeur 2π/3 et nous voulons annoter à la fois la courve sinus et cosinus. We'll first draw a marker on the curve as well as a straight dotted line. Then, we'll use the annotate command to display some text with an arrow.
+Nous choisissons la valeur 2π/3 et nous voulons annoter à la fois la courbe sinus et cosinus. Nous dessinons un marqueur sur la courbe ainsi qu'une ligne en trait pointillé. Puis nous utilisons la fonction ``annotate()``pour afficher du texte avec une flêche.
 
 ```python
 ...
@@ -208,9 +210,7 @@ arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 
 ## Sauvegarder une figure Matplotlib
 
-On peut générer un fichier image (que l'on pourra réutiliser ensuite sur le web ou dans un rapport) à partir d'une figure Matplotlib (par exemple ici en résolution de 72 points par pouce[^1].)
-
-[^1]: 1 pouce = 2.54 cm
+On peut générer un fichier image (que l'on pourra réutiliser ensuite sur le web ou dans un rapport) à partir d'une figure Matplotlib (par exemple ici en résolution de 72 points par pouce (1 pouce : 2.54 cm).)
 
 ```python
 savefig("nom_image.png", dpi=72)
