@@ -218,6 +218,17 @@ savefig("nom_image.png", dpi=72)
 ## Utiliser Matplotlib pour afficher des mesures
 
 ## Utiliser Matplotlib pour afficher le contenu d'une grille à deux dimensions
+Matplotlib peut afficher des images. Pour cela, il faut utiliser la commande:
+
+```python
+plt.imshow(m, cmap= ... , interpolation= ... )
+```
+
+ * Le premier paramètre est une matrice (array de numpy). Chaque élément de cette matrice est l’information sur un pixel, par exemple il peut s’agir d’une liste de triplets encodant les composantes R (rouge), G (verte), B (bleue) de chaque pixel.
+ * Le deuxième paramètre est la “carte de couleur” de l’image, elle associe couleurs aux valeurs.
+ * Le troisième paramètre est la manière dont les valeurs sont interpolées.
+
+Pour les détails, voir: http://matplotlib.org/users/image_tutorial.html
 
 ## Faire des animations avec Matplotlib
 Il est possible d'utiliser Matplotlib pour animer des images en utilisant le module animation.
