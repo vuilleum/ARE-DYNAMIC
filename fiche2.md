@@ -217,6 +217,31 @@ savefig("nom_image.png", dpi=72)
 
 ## Utiliser Matplotlib pour afficher des mesures
 
+Il est possible également d'utiliser Matplotlib pour afficher des mesures à l'écran. Le plus facile est d'utiliser des fichiers de mesures au format CSV (https://fr.wikipedia.org/wiki/Comma-separated_values).
+Utilisons des données provenant du dépôt github : https://github.com/cmrivers/ebola de l'épidémiologiste [Caitlin Rivers](http://www.caitlinrivers.com/). Ce dépôt de données contient des données de mortalité sur l'épidémie Ebola en Afrique de l'Ouest.
+
+Télécharger le fichier : https://github.com/cmrivers/ebola/blob/master/country_timeseries.csv
+(cliquer sur le bouton raw for avoir accès au fichier csv) et le nommer ``ebola.csv``.
+
+Affichons le nombre de cas cumulés d'Ebola en [Guinée-Conakry](https://fr.wikipedia.org/wiki/Guin%C3%A9e) :
+```python
+x, y = np.loadtxt('ebola.csv', delimiter=',', converters = {2: lambda s: float(s.strip() or 0)}, skiprows = 1, usecols=(1, 2), unpack=True)
+for i in (0, len(y)-1):
+   if (y[i] != 0.):
+      v = y[i]
+   if (y[i] == 0.):
+      y[i] = v
+plot(x,y)
+show()
+```
+
+On remarquera qu'il y comme il y a des données manquantes qui sont remplacées par la valeur 0 (paramètre ``converters``).
+
+**Question: comment pallier au problème des valeurs manquantes ?**
+
+**Question: Utiliser les fonctionnalités de Matplotlib pour présenter de la meilleure manière possible les données Ebola: couleur différentes en fonction du pays, légende des courbes, mise en évidence du pic épidémique.**
+
+Voir la documentation pour ``np.loadtxt()`` ici: http://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html
 ## Utiliser Matplotlib pour afficher le contenu d'une grille à deux dimensions
 Matplotlib peut afficher des images. Pour cela, il faut utiliser la commande:
 
@@ -233,11 +258,21 @@ Pour les détails, voir: http://matplotlib.org/users/image_tutorial.html
 ## Faire des animations avec Matplotlib
 Il est possible d'utiliser Matplotlib pour animer des images en utilisant le module animation.
 
-```
+```python
 from matplotlib import animation
-````
+```
 
 Il faut dans un premier temps créer la figure à animée. Pour cela deux fonctions peuvent être utilisées :
 
-1. init() qui définit l'image de base, qui restera présente par défaut en arrière-plan,
-2. animate() qui définit l'évolution de l'image et qui sera appellé périodiquement.
+1. ``init()`` qui définit l'image de base, qui restera présente par défaut en arrière-plan,
+2. ``animate()`` qui définit l'évolution de l'image et qui sera appellé périodiquement.
+
+Il suffit alors d’appeler la fonction d’animation du module:
+
+```python
+ani = animation.FuncAnimation(fig, animate, init, blit=True, interval = 20)
+```
+Le paramètre ``init ``n’est utile que lorsque ``blit=True``, ``fig`` est la figure créée, ``interval`` est le délai entre deux affichages.
+
+
+**Question: reprendre la simulation du Jeu de la Vie et faire une version animée du jeu**
