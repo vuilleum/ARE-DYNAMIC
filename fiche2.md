@@ -4,7 +4,7 @@ _Ce document est librement inspiré [tutoriel NumPy de Nicolas Rougier](http://w
 
 Lorsque l'on fait une simulation d'un phénomène physique, il est nécessaire de pouvoir visualiser graphiquement ce qui se passe. Une visualisation permet de comprendre et d'analyser plus facilement un phénomène.
 
-[Matplotlib](http://matplotlib.org) est une bibliothèque du langage de programmation Python qui, combinée avec les bibliothèques de calcul scientifique ```NumPy``` et ```scipy```, constitue un puissant outil pour tracer et visualiser des données.
+[Matplotlib](http://matplotlib.org) est une bibliothèque du langage de programmation Python qui, combinée avec les bibliothèques de calcul scientifique ```NumPy``` et ```SciPy```, constitue un puissant outil pour tracer et visualiser des données issues de mesures ou bien de simulation.
 
 ## Utiliser Matplotlib pour tracer une fonction
 
@@ -123,7 +123,6 @@ yticks([-1, 0, +1])
 
 ![image](http://www.labri.fr/perso/nrougier/teaching/matplotlib/figures/exercice_5.png)
 
-
 ## Définir le texte des graduations
 
 Les graduations actuelles ne sont pas idéales : elles n'affichent pas sur l'axe des abscisses les valeurs (+/-π, +/-π/2) et sur l'axe des ordonnées les valeurs (-1, 0, +1) qui nous intéressent pour cosinus. Modifions-les pour qu'elles correspondent à ces valeurs :
@@ -145,9 +144,9 @@ yticks([-1, 0, +1],
 
 ![image](http://www.labri.fr/perso/nrougier/teaching/matplotlib/figures/exercice_6.png)
 
-## Modifier la position des axes
+## Modifier la position des bords
 
-Les axes peuvent être placés arbitrairement et jusqu'à présent il se trouve sur les bords bas et gauche de la figure. Nous allons changer leurs positions pour les placer au milieu. Since there are four of them (top/bottom/left/right), we'll discard the top and right by setting their color to none and we'll move the bottom and left ones to coordinate 0 in data space coordinates.
+Les bords peuvent être placés arbitrairement et jusqu'à présent il se trouve en bas et en haut, à droite et à gauche de la figure. Nous allons changer leurs positions pour les placer au milieu. Il y en 4 (top/bottom/left/right). Nous allons effacer celui du haut (top) et de droite (right) en leur donnant une couleur vide (none). On déplace ensuite celui du bas et de gauche au coordonnées 0 en x et en y.
 
 ```python
 ...
