@@ -248,6 +248,6 @@ et affichons les résultats :
 
 ![image](http://www.labri.fr/perso/nrougier/teaching/numpy/figures/game-of-life-big.png)
 
-Nous utilisons pour l'affichage la bibliothèque Matplotlib que nous aborderons plus en détail dans une prochaine séance.
+Nous utilisons pour l'affichage la bibliothèque Matplotlib que nous aborderons plus en détail dans la prochaine fiche.
 
 Pour vous entrainez à l'utilisation de NumPy, vous pouvez essayer les exercices disponibles ici : https://github.com/rougier/numpy-100
