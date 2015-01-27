@@ -233,7 +233,7 @@ On remarquera qu'il y comme il y a des données manquantes qui sont remplacées 
 
 **Question: comment pallier au problème des valeurs manquantes ?**
 
-**Question: Utiliser les fonctionnalités de Matplotlib pour présenter de la meilleure manière possible les données Ebola: couleur différentes en fonction du pays, légende des courbes, mise en évidence du pic épidémique.**
+**Question: Utiliser les fonctionnalités de Matplotlib pour présenter de la meilleure manière possible les données Ebola: couleur différentes en fonction du pays, légende des courbes avec le nom du pays.**
 
 Voir la documentation pour ``np.loadtxt()`` ici: http://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html
 ## Utiliser Matplotlib pour afficher le contenu d'une grille à deux dimensions
