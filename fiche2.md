@@ -95,10 +95,9 @@ Les axes du repère sont les droites qui portent les marques de graduation et qu
 
 Il est possible de changer les axes du repères en utilisant les fonctions ``xlim()``, ``ylim()``.
 
-
 ```python
 xmin ,xmax = x.min(), x.max()
-ymin, ymax = y.min(), y.max()
+ymin, ymax = cosx.min(), cosx.max()
 
 dx = (xmax - xmin) * 0.2
 dy = (ymax - ymin) * 0.2
