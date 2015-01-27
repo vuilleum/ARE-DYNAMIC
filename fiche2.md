@@ -168,7 +168,7 @@ Ajoutons une légende dans le coin haut gauche. Il faut ajouter un paramètre no
 
 ```python
 ...
-plot(c, cosx, color="blue", linewidth=2.5, linestyle="-", label="cosinus")
+plot(x, cosx, color="blue", linewidth=2.5, linestyle="-", label="cosinus")
 plot(x, sinx, color="red",  linewidth=2.5, linestyle="-", label="sinus")
 
 legend(loc='upper left')
@@ -226,11 +226,6 @@ Télécharger le fichier : https://github.com/cmrivers/ebola/blob/master/country
 Affichons le nombre de cas cumulés d'Ebola en [Guinée-Conakry](https://fr.wikipedia.org/wiki/Guin%C3%A9e) :
 ```python
 x, y = np.loadtxt('ebola.csv', delimiter=',', converters = {2: lambda s: float(s.strip() or 0)}, skiprows = 1, usecols=(1, 2), unpack=True)
-for i in (0, len(y)-1):
-   if (y[i] != 0.):
-      v = y[i]
-   if (y[i] == 0.):
-      y[i] = v
 plot(x,y)
 show()
 ```
