@@ -174,27 +174,27 @@ et la fonction ``np.argwhere()`` (voir documentation ici : http://docs.scipy.org
 
 ```python
 >>> def iterate(cells):
-    	# Iterate the game of life
-    	# Count neighbours
+    	# Itérer le jeu de la vie
+    	# Compter les voisins
     	n = np.zeros(cells.shape, dtype=int)
     	n[1:-1,1:-1] += (cells[0:-2,0:-2] + cells[0:-2,1:-1] + cells[0:-2,2:] +
                          cells[1:-1,0:-2]                    + cells[1:-1,2:] +
                          cells[2:  ,0:-2] + cells[2:  ,1:-1] + cells[2:  ,2:])
     	n1 = n.ravel()
     	cells1 = cells.ravel()
-    	# Apply rules
+    	# Appliquer les règles
     	rule1 = np.argwhere( (cells1==1) & (n1 < 2) )
     	rule2 = np.argwhere( (cells1==1) & (n1 > 3) )
     	rule3 = np.argwhere( (cells1==1) & ((n1==2) | (n1==3)) )
     	rule4 = np.argwhere( (cells1==0) & (n1==3) )
 
-    	# Set new values
+    	# Modifier les cellules
     	cells1[rule1] = 0
     	cells1[rule2] = 0
     	cells1[rule3] = cells1[rule3]
     	cells1[rule4] = 1
 
-    	# Make sure borders stay null
+    	# Faire en sorte que les bords soient nuls
     	cells[0,:] = cells[-1,:] = cells[:,0] = cells[:,-1] = 0
 ```
 
