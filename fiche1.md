@@ -2,10 +2,10 @@
 
 _Ce document est librement inspiré [tutoriel NumPy de Nicolas Rougier](http://www.labri.fr/perso/nrougier/teaching/numpy/numpy.html) et est disponible avec son autorisation sous licence Creative Commons Attribution 3.0 United States License (CC-by) http://creativecommons.org/licenses/by/3.0/us_
 
-La simulation numérique (ou informatique) permet de représenter dans une machine (ordinateur) un phénomène écologique ou physique que l'on veut étudier à moindre coût et sans danger. On distingue généralement deux types de simulation: ``simulation continue`` et ``simulation discrète``. 
+La simulation numérique (ou informatique) permet de représenter dans une machine (ordinateur) un phénomène écologique ou physique que l'on veut étudier à moindre coût et sans danger. On distingue généralement deux types de simulation: ``simulation continue`` et ``simulation discrète``.
 
-Le principe d'une ``simulation discrète`` d'un phénonème physique ou écologique consiste à représenter l'état initial de la simulation, puis ensuite de construire une fonction qui à partir d'un état précédent va déterminer l'état suivant de la simulation. 
-L'application de cette fonction permet de passer du temps t0 au temps t1, puis t2, etc ... Généralement, on arrrête la simulation au bout d'un certain nombre d'application de la fonction (n) déterminé à l'avance. 
+Le principe d'une ``simulation discrète`` d'un phénonème physique ou écologique consiste à représenter l'état initial de la simulation, puis ensuite de construire une fonction qui à partir d'un état précédent va déterminer l'état suivant de la simulation.
+L'application de cette fonction permet de passer du temps t0 au temps t1, puis t2, etc ... Généralement, on arrrête la simulation au bout d'un certain nombre d'application de la fonction (n) déterminé à l'avance.
 
 Au contraire une ``simulation continue`` permet de représenter de manière continue les changements d'un système physique ou biologique. Généralement on emploie pour cela, des [équations différentielles](http://fr.wikipedia.org/wiki/%C3%89quation_diff%C3%A9rentielle).
 
@@ -20,14 +20,14 @@ Ce "jeu" est un fait un jeu à zéro joueur, car son évolution est déterminé 
 L'univers (ou l'état) du Jeu de la Live est une grille à deux dimensions de taille infinie, composé de cellules carrées. Chaque cellule peut contenir l'un des deux états possibles: vivant ou mort, que l'on représente par les valeurs entières 0 ou 1.
 
 ![image](http://www.labri.fr/perso/nrougier/teaching/numpy/figures/game-of-life.png)
-Chaque cellule interagit avec ces 8 voisins, qui sont les cellules directement adjacentes horizontalement, verticalement et en diagonale. A chaque étape du temps, les règles suivantes vont s'appliquer : 
+Chaque cellule interagit avec ces 8 voisins, qui sont les cellules directement adjacentes horizontalement, verticalement et en diagonale. A chaque étape du temps, les règles suivantes vont s'appliquer :
 
 1. Une cellule vivante avec moins de deux voisines vivantes, meurt d'isolement,
 2. Une cellule vivante avec plus de 3 cellules voisines vivantes, meurt d'étouffement,
 3. Une cellule vivante avec 2 ou 3 cellules voisines vivantes, reste inchangée à la prochaine génération,
 4. Une cellule morte avec exactement 3 cellules vivantes, devient une cellule vivante.L'état de départ est constitué par une forme initiale. La première génération est créér en appliquant les règles ci-dessus simultanément à toutes les cellules de l'état de départ: naissances et morts sont effectués simultanément, and le moment où cela se déroule est appellé tick (de simulation). Les règles continuent d'être appliquées pour créer les futures générations.
 
-Pour commencer, nous allons utiliser un état de départ très simple, appellé "planeur" (glider) qui est connu pour se déplacer diagonalement au bout de 4 itérations comme indiqué ci-dessous : 
+Pour commencer, nous allons utiliser un état de départ très simple, appellé "planeur" (glider) qui est connu pour se déplacer diagonalement au bout de 4 itérations comme indiqué ci-dessous :
 
 ![image](http://www.labri.fr/perso/nrougier/teaching/numpy/figures/glider-00.png)
 ![image](http://www.labri.fr/perso/nrougier/teaching/numpy/figures/glider-01.png)
@@ -154,7 +154,7 @@ array([[0, 0, 0, 0, 0, 0],
 ```
 
 **Question: Que fait la fonction ``np.zeros()`` ?**
-                     
+
 ###Faire des itérations
 
 Construisons la fonction ``iterate`` qui permet d'application les règles sur ``cells`` pour produire une nouvell génération.
@@ -176,7 +176,7 @@ et la fonction ``np.argwhere()`` (voir documentation ici : http://docs.scipy.org
 >>> def iterate(cells):
     	# Iterate the game of life
     	# Count neighbours
-    	neighbours = np.zeros(cells.shape, dtype=int)
+    	n = np.zeros(cells.shape, dtype=int)
     	n[1:-1,1:-1] += (cells[0:-2,0:-2] + cells[0:-2,1:-1] + cells[0:-2,2:] +
                          cells[1:-1,0:-2]                    + cells[1:-1,2:] +
                          cells[2:  ,0:-2] + cells[2:  ,1:-1] + cells[2:  ,2:])
@@ -187,7 +187,7 @@ et la fonction ``np.argwhere()`` (voir documentation ici : http://docs.scipy.org
     	rule2 = np.argwhere( (cells1==1) & (n1 > 3) )
     	rule3 = np.argwhere( (cells1==1) & ((n1==2) | (n1==3)) )
     	rule4 = np.argwhere( (cells1==0) & (n1==3) )
-    	
+
     	# Set new values
     	cells1[rule1] = 0
     	cells1[rule2] = 0
@@ -231,7 +231,7 @@ Effectuons 100 itérations :
 >>> for i in range(100): iterate(cells)
 ```
 
-et affichons les résultats : 
+et affichons les résultats :
 
 ```python
 >>> import matplotlib.pyplot as plt
