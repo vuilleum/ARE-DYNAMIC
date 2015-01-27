@@ -250,4 +250,6 @@ et affichons les résultats :
 
 Nous utilisons pour l'affichage la bibliothèque Matplotlib que nous aborderons plus en détail dans la prochaine fiche.
 
+Vous trouverez une version graphique du Jeu de la Vie (écrit en JavaScript) ici : http://www.grappa.univ-lille3.fr/~torre/Enseignement/TPs/JavaScript/jeu-de-la-vie-js-canvas-html5/
+
 Pour vous entrainez à l'utilisation de NumPy, vous pouvez essayer les exercices disponibles ici : https://github.com/rougier/numpy-100
