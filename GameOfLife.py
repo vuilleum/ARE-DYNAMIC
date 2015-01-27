@@ -26,15 +26,21 @@ def iterate(cells):
     # Faire en sorte que les bords soient nuls
     cells[0,:] = cells[-1,:] = cells[:,0] = cells[:,-1] = 0
 
-for i in range(10000):
-    iterate(cells)
-
 import matplotlib.pyplot as plt
 size = np.array(cells.shape)
 dpi = 72.0
 figsize= size[1]/float(dpi),size[0]/float(dpi)
 fig = plt.figure(figsize = figsize, dpi = dpi, facecolor = "white")
 fig.add_axes([0.0, 0.0, 1.0, 1.0], frameon = False)
-plt.imshow(cells, interpolation = 'nearest', cmap = plt.cm.gray_r)
+im=plt.imshow(cells, interpolation = 'nearest', cmap = plt.cm.gray_r)
 plt.xticks([]), plt.yticks([])
+
+import matplotlib.animation as animation
+
+def update(*args):
+    iterate(cells)
+    im.set_array(cells)
+    return im,
+
+ani = animation.FuncAnimation(fig, update, frames=range(20), interval=50)
 plt.show()
