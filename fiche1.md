@@ -239,9 +239,9 @@ et affichons les résultats :
 >>> size = np.array(cells.shape)
 >>> dpi = 72.0
 >>> figsize= size[1]/float(dpi),size[0]/float(dpi)
->>> fig = plt.figure(figsize=figsize, dpi=dpi, facecolor="white")
->>> fig.add_axes([0.0, 0.0, 1.0, 1.0], frameon=False)
->>> plt.imshow(cells,interpolation='nearest', cmap=plt.cm.gray_r)
+>>> fig = plt.figure(figsize = figsize, dpi = dpi, facecolor = "white")
+>>> fig.add_axes([0.0, 0.0, 1.0, 1.0], frameon = False)
+>>> plt.imshow(cells, interpolation = 'nearest', cmap = plt.cm.gray_r)
 >>> plt.xticks([]), plt.yticks([])
 >>> plt.show()
 ```
