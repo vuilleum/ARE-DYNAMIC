@@ -228,7 +228,8 @@ La bibliothèque NumPy complète la bibliothèque ``random`` par des fonctions c
 Effectuons 100 itérations :
 
 ```python
->>> for i in range(100): iterate(cells)
+>>> for i in range(100):
+   iterate(cells)
 ```
 
 et affichons les résultats :
